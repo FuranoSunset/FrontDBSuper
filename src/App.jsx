@@ -1,14 +1,20 @@
 import { useState } from "react";
 import { useFetch } from "./useFetch";
 
+
 function App() {
   const { data, loading } = useFetch("https://dragonball-api.com/api/characters/");
   const [selectedCharacter, setSelectedCharacter] = useState("");
+  const [selectedCharacter2, setSelectedCharacter2] = useState("");
+
 
   const handleChange = (e) => {
     setSelectedCharacter(e.target.value);
   };
 
+  const handleChange2 = (e) => {
+    setSelectedCharacter2(e.target.value);
+  };
   return (
     <>
       <div>
@@ -33,9 +39,28 @@ function App() {
             </p>
           )}
         </div>
+        {loading ? (
+            <p>Loading...</p>
+          ) : (
+            <select id="pj1" onChange={handleChange2} value={selectedCharacter2}>
+              <option value="">Selecciona un personaje</option>
+              {data?.items?.map((character) => (
+                <option key={character.maxKi} value={character.maxKi}>
+                  {character.name} - Max Ki: {character.maxKi}
+                </option>
+              ))}
+            </select>
+          )}
+          
+          {selectedCharacter2 && (
+            <p>
+              Has seleccionado el personaje con un nivel máximo de Ki de: <strong>{selectedCharacter2}</strong>
+            </p>
+          )}
       </div>
     </>
   );
 }
+
 
 export default App;
