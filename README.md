@@ -1,8 +1,11 @@
-# React + Vite
+App web que va a comprar dos personajes de Dragon Ball Super y va a indicar quién ganaría una supuesta pelea hipotética.
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Para ello va a basarse en los niveles de Ki máximos de ambos personajes.
 
-Currently, two official plugins are available:
+Los datos están siendo extraídos mediante fetching de la Dragon Ball Api (https://web.dragonball-api.com/).
+Agradecer a los creadores de esta Api su gran labor y su fácil accesibilidad.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Actualmente el proyecto aún se encuentra en una etapa muy temprana. Me encuentro trabajando en crear la función que va a 
+encargarse de comparar los dos valores de Ki máximo.
+
+Para el desarrollo he utilizado React con Vite, todavía no he comenzado con el diseño pero voy a utilizar Tailwind.
