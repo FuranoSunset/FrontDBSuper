@@ -1,0 +1,52 @@
+//Con esta funcion detecto los espacios en blanco, también la usamos para detectar si hay sufijo
+
+function detectarEspacios(ki) {
+  return /\s/.test(ki);
+}
+//Con esta funcion detecto y quito los puntos
+
+function quitarPuntos(ki) {
+  return ki.replace(/[\.]/g, '');
+}
+
+//La idea es crear una funcion que pase los string a int pero para ello hay que usar las funciones creadas anteriormente
+
+function parsearKi(ki){
+    //Si entra dentro del if implica que no hay sufijo, eso lleva directamente a eliminar los puntos y luego parsea el String
+    if (!detectarEspacios(ki)){
+        let kiSinPuntos = quitarPuntos(ki);
+        return parseInt(kiSinPuntos);
+        
+    } else {
+        let arrayKi = ki.split(" "); //con esto separo en dos partes el ki y lo convierto en un array
+        let prefijo = arrayKi[0]; //aqui almaceno la parte numerica
+        let sufijo = arrayKi[1]; //aqui almaceno el sufijo (como por ejemplo Septillion)
+
+        let prefijoSinPuntos = quitarPuntos(prefijo);
+        let prefijoInt = parseInt(prefijoSinPuntos); //Con los puntos ya quitados parseamos el prefijo
+
+        if(sufijo === "Billion" || sufijo === "billion") { //aquí pueden cumplirse 1 de las 2 condiciones
+          prefijoInt = prefijoInt * 1e9; //aquí reasignamos la variable prefijoInt anadiendole los 0s correspondientes
+        
+        } else if(sufijo === "Trillion" || sufijo === "trillion") { 
+          prefijoInt = prefijoInt * 1e12; 
+        
+        } else if(sufijo === "Quadrillion" || sufijo === "quadrillion") { 
+          prefijoInt = prefijoInt * 1e15; 
+        
+        } else if(sufijo === "Quintillion" || sufijo === "quintillion") { 
+          prefijoInt = prefijoInt * 1e18; 
+        
+        } else if(sufijo === "Sixtillion" || sufijo === "sixtillion") { 
+          prefijoInt = prefijoInt * 1e21; 
+        
+        } else if(sufijo === "Septillion" || sufijo === "septillion") { 
+          prefijoInt = prefijoInt * 1e24; 
+        
+        } else {
+          prefijoInt = prefijoInt * 1e30;
+        }
+
+        return prefijoInt;
+    }
+}

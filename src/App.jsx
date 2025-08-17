@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { useFetch } from "./useFetch";
 
-
 function App() {
   const { data, loading } = useFetch("https://dragonball-api.com/api/characters/");
   const [selectedCharacter, setSelectedCharacter] = useState("");
@@ -42,7 +41,7 @@ function App() {
         {loading ? (
             <p>Loading...</p>
           ) : (
-            <select id="pj1" onChange={handleChange2} value={selectedCharacter2}>
+            <select id="pj2" onChange={handleChange2} value={selectedCharacter2}>
               <option value="">Selecciona un personaje</option>
               {data?.items?.map((character) => (
                 <option key={character.maxKi} value={character.maxKi}>
