@@ -1,4 +1,3 @@
-  import { maxKi } from "App.jsx";
   import { parsearKi } from "parsearKi.js";
    
 //Aquí quiero crear una funcion que compare los dos Ki's maximos de los personajes seleccionados e indique cual es mayor
@@ -13,10 +12,17 @@
             alert("Ganaría {selectedCharacter2}")
         }};*/
 
-function compararMaxKi(personajeA, personajeB) {
+export function compararKi(personajeA, personajeB) {
 
-  const kiA = stringANumero(personajeA.maxKi);
-  const kiB = stringANumero(personajeB.maxKi);
+  const kiA = parsearKi(personajeA.maxKi);
+  const kiB = parsearKi(personajeB.maxKi);
+
+  if(kiA > kiB){
+    alert("Gana el personaje 1");
+  } else if (kiA < kiB){
+    alert("Gana el personaje 2");
+  } else {
+    alert("Error");
+  }
 
 }
-

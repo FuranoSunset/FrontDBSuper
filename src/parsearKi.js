@@ -11,7 +11,7 @@ function quitarPuntos(ki) {
 
 //La idea es crear una funcion que pase los string a int pero para ello hay que usar las funciones creadas anteriormente
 
-function parsearKi(ki){
+export function parsearKi(ki){
     //Si entra dentro del if implica que no hay sufijo, eso lleva directamente a eliminar los puntos y luego parsea el String
     if (!detectarEspacios(ki)){
         let kiSinPuntos = quitarPuntos(ki);
@@ -50,3 +50,4 @@ function parsearKi(ki){
         return prefijoInt;
     }
 }
+

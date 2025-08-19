@@ -1,5 +1,7 @@
 import { useState } from "react";
 import { useFetch } from "./useFetch";
+import { parsearKi } from "./parsearKi.js";
+
 
 function App() {
   const { data, loading } = useFetch("https://dragonball-api.com/api/characters/");
@@ -8,12 +10,14 @@ function App() {
 
 
   const handleChange = (e) => {
-    setSelectedCharacter(e.target.value);
+    setSelectedCharacter(parsearKi(e.target.value));
   };
 
   const handleChange2 = (e) => {
-    setSelectedCharacter2(e.target.value);
+    setSelectedCharacter2(parsearKi(e.target.value));
   };
+
+
   return (
     <>
       <div>
