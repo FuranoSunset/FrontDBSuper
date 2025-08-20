@@ -50,4 +50,3 @@ export function parsearKi(ki){
         return prefijoInt;
     }
 }
-

@@ -3,20 +3,30 @@ import { useFetch } from "./useFetch";
 import { parsearKi } from "./parsearKi.js";
 
 
+
 function App() {
   const { data, loading } = useFetch("https://dragonball-api.com/api/characters/");
-  const [selectedCharacter, setSelectedCharacter] = useState("");
-  const [selectedCharacter2, setSelectedCharacter2] = useState("");
+  const [selectedKi, setselectedKi] = useState("");
+  const [selectedKi2, setselectedKi2] = useState("");
+  const [winnerText, setWinnerText] = useState("");
 
 
   const handleChange = (e) => {
-    setSelectedCharacter(parsearKi(e.target.value));
+    setselectedKi(parsearKi(e.target.value));
   };
 
   const handleChange2 = (e) => {
-    setSelectedCharacter2(parsearKi(e.target.value));
+    setselectedKi2(parsearKi(e.target.value));
   };
 
+  const handleClick = (_) => {
+    if(selectedKi>selectedKi2){
+      alert("Personaje 1");
+    } else if (selectedKi<selectedKi2){
+      alert("Personaje 2");
+    }
+  };
+  
 
   return (
     <>
@@ -26,7 +36,7 @@ function App() {
           {loading ? (
             <p>Loading...</p>
           ) : (
-            <select id="pj1" onChange={handleChange} value={selectedCharacter}>
+            <select id="pj1" onChange={handleChange} value={selectedKi}>
               <option value="">Selecciona un personaje</option>
               {data?.items?.map((character) => (
                 <option key={character.maxKi} value={character.maxKi}>
@@ -36,16 +46,16 @@ function App() {
             </select>
           )}
           
-          {selectedCharacter && (
+          {selectedKi && (
             <p>
-              Has seleccionado el personaje con un nivel máximo de Ki de: <strong>{selectedCharacter}</strong>
+              Has seleccionado el personaje con un nivel máximo de Ki de: <strong>{selectedKi}</strong>
             </p>
           )}
         </div>
         {loading ? (
             <p>Loading...</p>
           ) : (
-            <select id="pj2" onChange={handleChange2} value={selectedCharacter2}>
+            <select id="pj2" onChange={handleChange2} value={selectedKi2}>
               <option value="">Selecciona un personaje</option>
               {data?.items?.map((character) => (
                 <option key={character.maxKi} value={character.maxKi}>
@@ -55,11 +65,14 @@ function App() {
             </select>
           )}
           
-          {selectedCharacter2 && (
+          {selectedKi2 && (
             <p>
-              Has seleccionado el personaje con un nivel máximo de Ki de: <strong>{selectedCharacter2}</strong>
+              Has seleccionado el personaje con un nivel máximo de Ki de: <strong>{selectedKi2}</strong>
             </p>
+            
           )}
+          <button if="botonVS" onClick={handleClick}>Quien Gana</button>
+          <span>{winnerText}</span>
       </div>
     </>
   );
