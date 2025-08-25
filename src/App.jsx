@@ -5,7 +5,7 @@ import { parsearKi } from "./parsearKi.js";
 
 
 function App() {
-  const { data, loading } = useFetch("https://dragonball-api.com/api/characters/");
+  const { data, loading } = useFetch("https://dragonball-api.com/api/characters?limit=100");
   const [selectedKi, setselectedKi] = useState("");
   const [selectedKi2, setselectedKi2] = useState("");
   const [winnerText, setWinnerText] = useState("");
@@ -21,18 +21,18 @@ function App() {
 
   const handleClick = (_) => {
     if(selectedKi>selectedKi2){
-      alert("Personaje 1");
+      setWinnerText("Gana el personaje de la izquierda");
     } else if (selectedKi<selectedKi2){
-      alert("Personaje 2");
+      setWinnerText("Gana el personaje de la derecha");
     }
   };
   
 
   return (
     <>
-      <div>
-        <h1>Consumiendo APIs</h1>
-        <div className="card">
+      <div id="contenedorPrincipal">
+        
+        <div className="card" id="cajasPersonajes">
           {loading ? (
             <p>Loading...</p>
           ) : (
@@ -51,7 +51,7 @@ function App() {
               Has seleccionado el personaje con un nivel máximo de Ki de: <strong>{selectedKi}</strong>
             </p>
           )}
-        </div>
+        
         {loading ? (
             <p>Loading...</p>
           ) : (
@@ -64,6 +64,7 @@ function App() {
               ))}
             </select>
           )}
+          </div>
           
           {selectedKi2 && (
             <p>

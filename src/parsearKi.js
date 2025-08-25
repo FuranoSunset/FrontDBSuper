@@ -3,11 +3,16 @@
 function detectarEspacios(ki) {
   return /\s/.test(ki);
 }
-//Con esta funcion detecto y quito los puntos
+//Con esta funcion detecto y quito los puntos y las comas
 
 function quitarPuntos(ki) {
-  return ki.replace(/[\.]/g, '');
+  if (/^\d+\.\d+$/.test(ki)) { //con esto detectamos si es un float
+    return ki;
+  } else {
+    return ki.replace(/[.,]/g, '');
+  }
 }
+
 
 //La idea es crear una funcion que pase los string a int pero para ello hay que usar las funciones creadas anteriormente
 
@@ -50,3 +55,10 @@ export function parsearKi(ki){
         return prefijoInt;
     }
 }
+
+/*
+Si encuentro un fallo debo parar todo lo que esté haciendo y apuntar 
+los datos del fallo, recargo e intento replicar el fallo. Hacer lista de
+los datos que fallan y buscar un patron. Adaptar mi algoritmo al patron de
+fallos para que se solucione.
+ */
