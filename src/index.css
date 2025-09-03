@@ -1,5 +1,5 @@
 body{
-    background-color: rgb(255 69 0);
+    background-color: rgb(247, 120, 74);
 }
 h1{
     text-align: center;
@@ -126,7 +126,8 @@ h1{
 	color: transparent;
 	font: 100 clamp(1em, 3vw, 3em) exo;
   font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-	animation: shimmer 7s linear infinite
+	animation: shimmer 7s linear infinite;
+  user-select: none;
 }
 
 @keyframes shimmer { to { background-position: 100% } }

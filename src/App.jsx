@@ -9,11 +9,13 @@ function App() {
   const [winnerText, setWinnerText] = useState("");
 
   const handleChange = (e) => {
-    setselectedKi(parsearKi(e.target.value));
+    let selectedChar = data.items[parseInt(e.target.value)-1];
+    setselectedKi(parsearKi(selectedChar.maxKi));
   };
 
   const handleChange2 = (e) => {
-    setselectedKi2(parsearKi(e.target.value));
+    let selectedChar = data.items[parseInt(e.target.value)-1];
+    setselectedKi2(parsearKi(selectedChar.maxKi));
   };
 
   const handleClick = () => {
@@ -38,7 +40,7 @@ function App() {
             <select id="pj1" onChange={handleChange} value={selectedKi}>
               <option value="">Selecciona un personaje</option>
               {data?.items?.map((character) => (
-                <option key={character.id} value={character.maxKi}>
+                <option key={character.id} value={character.id}>
                   {character.name}
                 </option>
               ))}
@@ -71,8 +73,8 @@ function App() {
             <select id="pj2" onChange={handleChange2} value={selectedKi2}>
               <option value="">Selecciona un personaje</option>
               {data?.items?.map((character) => (
-                <option key={character.id} value={character.maxKi}>
-                  {character.name} - Max Ki: {character.maxKi}
+                <option key={character.id} value={character.id}>
+                  {character.name}
                 </option>
               ))}
             </select>
